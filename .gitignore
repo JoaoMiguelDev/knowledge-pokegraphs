@@ -1,0 +1,27 @@
+# ---- Dados brutos (regeneráveis, pesados) ----
+data/cache/
+!data/cache/.gitkeep
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# ---- Ambientes virtuais ----
+.venv/
+venv/
+env/
+
+# ---- IDEs / editores ----
+.vscode/
+.idea/
+*.swp
+
+# ---- SO ----
+.DS_Store
+Thumbs.db
+
+# ---- Artefatos temporários ----
+*.log
+!data/log_fetch.txt
