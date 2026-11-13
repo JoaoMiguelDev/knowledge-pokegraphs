@@ -1,0 +1,30 @@
+Knowledge PokéGraphs — fetch log
+==================================================
+
+--- Run at 2026-11-13T10:37:35 ---
+Base URL: https://pokeapi.co/api/v2
+HTTP requests: 343
+Cache hits: 0
+Errors: 1
+  - ReadTimeout(ReadTimeoutError("HTTPSConnectionPool(host='pokeapi.co', port=443): Read timed out. (read timeout=15)"))
+Satellite Pokémon: 0
+Abilities: 0
+Cached files: 342
+
+--- Run at 2026-11-13T10:49:39 ---
+Base URL: https://pokeapi.co/api/v2
+HTTP requests: 254
+Cache hits: 530
+Errors: 0
+Satellite Pokémon: 37
+Abilities: 124
+Cached files: 596
+
+--- Run at 2026-11-13T10:53:17 ---
+Base URL: https://pokeapi.co/api/v2
+HTTP requests: 0
+Cache hits: 784
+Errors: 0
+Satellite Pokémon: 37
+Abilities: 124
+Cached files: 596
