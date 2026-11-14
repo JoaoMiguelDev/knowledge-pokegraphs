@@ -28,3 +28,12 @@ Errors: 0
 Satellite Pokémon: 37
 Abilities: 124
 Cached files: 596
+
+--- Run at 2026-11-14T15:11:03 ---
+Base URL: https://pokeapi.co/api/v2
+HTTP requests: 596
+Cache hits: 188
+Errors: 0
+Satellite Pokémon: 37
+Abilities: 124
+Cached files: 596

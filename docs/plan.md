@@ -145,26 +145,48 @@ Tarefas:
 
 Tarefas:
 
-- [ ] Classe `KnowledgeGraph` com:
-  - [ ] `nodes: dict[id → {type, properties}]`
-  - [ ] `adj: dict[origem → dict[relação → dict[destino → properties]]]`
-- [ ] Operações obrigatórias (especificação):
-  - [ ] `add_node(id, type, **props)`
-  - [ ] `add_edge(source, relation, target, **props)`
-  - [ ] `remove_node(id)` — **cascatear** remoção de arestas de entrada e saída.
-  - [ ] `remove_edge(source, relation, target)`
-  - [ ] `get_node(id)`
-  - [ ] `get_neighbors(id, relation=None)`
-  - [ ] `get_incoming(id, relation=None)`
-- [ ] Operações extras (diferenciais):
-  - [ ] `query(source=None, relation=None, target=None)` — padrão de tripla com curingas (analogia SPARQL).
-  - [ ] `find_path(origem, destino)` — **BFS** (usado nas cadeias evolutivas).
-  - [ ] `describe(id)` — nó + todas as arestas de entrada e saída.
-  - [ ] `validate(SCHEMA)` — checagem de ontologia.
-  - [ ] `load_from_json(path)` / `save_to_json(path)`.
-- [ ] Documentar **complexidade** de cada operação (para o relatório).
+- [x] Classe `KnowledgeGraph` com:
+  - [x] `nodes: dict[id → {type, properties}]`
+  - [x] `adj: dict[origem → dict[relação → dict[destino → properties]]]`
+- [x] Operações obrigatórias (especificação):
+  - [x] `add_node(id, type, **props)`
+  - [x] `add_edge(source, relation, target, **props)`
+  - [x] `remove_node(id)` — **cascatear** remoção de arestas de entrada e saída.
+  - [x] `remove_edge(source, relation, target)`
+  - [x] `get_node(id)`
+  - [x] `get_neighbors(id, relation=None)`
+  - [x] `get_incoming(id, relation=None)`
+- [x] Operações extras (diferenciais):
+  - [x] `query(source=None, relation=None, target=None)` — padrão de tripla com curingas (analogia SPARQL).
+  - [x] `find_path(origem, destino)` — **BFS** (usado nas cadeias evolutivas).
+  - [x] `describe(id)` — nó + todas as arestas de entrada e saída.
+  - [x] `validate(SCHEMA)` — checagem de ontologia.
+  - [x] `load_from_json(path)` / `save_to_json(path)`.
+- [x] Documentar **complexidade** de cada operação (para o relatório).
 
-**Critério de conclusão:** testes manuais no REPL demonstram cada operação; `find_path` conecta qualquer inicial à sua forma final.
+### Complexidade das operações
+
+Considere `V` nós, `E` arestas, `d(v)` o grau de saída do nó e `P` a quantidade
+de propriedades copiada ou serializada. Inserções e buscas em dicionário são
+O(1) em média; os custos de copiar propriedades estão indicados à parte.
+
+| Operação | Complexidade |
+|---|---|
+| `add_node`, `add_edge` | O(1) média, mais O(P) para copiar propriedades |
+| `remove_edge` | O(1) média |
+| `remove_node` | O(V + E), para remover arestas de entrada e saída |
+| `get_node` | O(P), para retornar uma cópia defensiva |
+| `get_neighbors` | O(d(v)) |
+| `get_incoming`, `incoming_edges` | O(E), pois as arestas de entrada não são armazenadas em índice reverso |
+| `query` | O(E) |
+| `find_path` (BFS) | O(V + E) |
+| `describe` | O(V + E), dominado pela varredura de arestas de entrada |
+| `validate` | O(V + E) |
+| `load_from_json`, `save_to_json` | O(V + E + P), incluindo propriedades e serialização |
+
+**Critério de conclusão:** os testes automatizados em `tests/test_kg.py` cobrem as
+operações, remoções em cascata, validação, BFS e round-trip JSON. A busca de
+caminho é direcionada; cadeias evolutivas são percorridas no sentido `evolves_to`.
 
 ---
 
@@ -256,5 +278,4 @@ Tarefas:
 - [ ] Código implementa **adicionar, remover, consultar** nós e arestas.
 - [ ] Relatório cobre aplicação, base, potenciais e limitações.
 - [ ] Apresentação mostra **grafo + aplicação rodando** em ≤ 10 min.
-
 

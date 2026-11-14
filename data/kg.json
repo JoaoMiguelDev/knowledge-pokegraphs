@@ -1,7 +1,7 @@
 {
   "meta": {
     "generated_by": "build_kg.py",
-    "build_date": "2026-11-14T06:47:22",
+    "build_date": "2026-11-14T15:11:26",
     "pokeapi_base": "https://pokeapi.co/api/v2",
     "counts": {
       "nodes": 330,
