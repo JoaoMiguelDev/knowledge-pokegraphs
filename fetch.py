@@ -32,7 +32,7 @@ CACHE = "data/cache"
 LOG = "data/log_fetch.txt"
 SLEEP = 0.1
 
-#utils
+# Utils
 
 def cache_path(endpoint: str) -> str:
     return os.path.join(CACHE, endpoint.replace("/", "_") + ".json")
@@ -66,7 +66,7 @@ def chain_species_ids(chain_data:dict) -> list[int]:
     walk((chain_data["chain"]))
     return ids
 
-#pipeline
+# Pipeline
 
 def collect_types(stats: dict) -> None:
     print("[1/5] Tipos (18)...")
